@@ -1,8 +1,15 @@
+const Task = require("../models/tasks.js");
+
 const getAllTasks = (req, res) => {
   res.json("All items");
 };
-const createTasks = (req, res) => {
-  res.json(req.body);
+const createTasks = async (req, res) => {
+  try {
+    const task = await Task.create(req.body);
+    res.status(201).json({ task });
+  } catch (err) {
+    res.status(500).json({ msg: error });
+  }
 };
 
 const getTask = (req, res) => {
@@ -10,11 +17,11 @@ const getTask = (req, res) => {
 };
 
 const updateTask = (req, res) => {
-  res.json("update taksk");
+  res.send("update taksk");
 };
 
 const deleteTask = (req, res) => {
-  res.json("delete");
+  res.send("delete");
 };
 
 module.exports = { getAllTasks, getTask, updateTask, deleteTask, createTasks };
