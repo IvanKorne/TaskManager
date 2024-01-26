@@ -1,6 +1,6 @@
 const Task = require("../models/tasks.js");
-const asyncWrapper = require("../middleware/async");
-const { createCustomError } = require("../errors/customError.js");
+const asyncWrapper = require("../middleware/async"); // Removes the need for try catch blocks
+const { createCustomError } = require("../errors/customError.js"); // Custom error for mistake in code (not route error)
 
 const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Task.find({});

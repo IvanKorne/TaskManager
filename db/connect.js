@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose"); // Database
 
 const connectDB = (url) => {
   return mongoose.connect(url, {
